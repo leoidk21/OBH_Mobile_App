@@ -1,0 +1,17 @@
+export default {
+  primary: '#FDF6ED',
+  button: '#102E50',
+  white: '#FFFFFF',
+  black: '#000000',
+  secondary: '#FFF8F4',
+  border: '#E5E5E5',
+  borderv2: '#e8e8e8ff',
+  borderv3: '#bbbbbbff',
+  borderv4: '#505050ff',
+  indicator: '#0B1D51',
+  indicatorBlank: '#C0C9EE',
+  facebookBtn: '#2A65DD',
+  brown: '#343131',
+  faUser: '#E0F2FE',
+  checklist: '#F9DCA4',
+};
