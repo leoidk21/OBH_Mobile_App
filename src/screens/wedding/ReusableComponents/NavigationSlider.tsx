@@ -59,16 +59,16 @@ const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) =
   };
 
   const MenuItem = ({
-  icon,
-  label,
-  screen,
-  active = false,
-}: {
-  icon: React.ComponentType<any> | ImageSourcePropType;
-  label: string;
-  screen: string;
-  active?: boolean;
-}) => (
+    icon,
+    label,
+    screen,
+    active = false,
+  }: {
+    icon: React.ComponentType<any> | ImageSourcePropType;
+    label: string;
+    screen: string;
+    active?: boolean;
+  }) => (
   <View style={active ? styles.menuIndicatorActive : styles.menuIndicatorInactive}>
     <View style={styles.menuItem}>
       <TouchableOpacity
@@ -102,9 +102,9 @@ const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) =
 
   const accountMenu = [
     {
-      label: "Profile",
+      label: "Account",
       icon: require("../../../assets/PROFILE.png"),
-      screen: "Profile",
+      screen: "Account",
     },
     {
       label: "Gallery",
@@ -115,6 +115,11 @@ const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) =
       label: "E-Signature",
       icon: require("../../../assets/SIGNATURE.png"),
       screen: "ESignature",
+    },
+    {
+      label: "Notification",
+      icon: require("../../../assets/notif.png"),
+      screen: "Notification",
     },
     {
       label: "Payment",
@@ -133,22 +138,23 @@ const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) =
               source={require("../../../assets/burger.png")}
               style={{ width: wp("5.5%"), height: wp("5.5%"), objectFit: "contain" }}
               resizeMode="contain"
+              
             />
           </TouchableOpacity> 
           <Text style={styles.headerText}>{headerTitle ?? ""}</Text>
         </View>
 
-        <View style={{ gap: 12, flexDirection: "row", alignItems: "center", marginTop: hp("2.5%"), marginRight: wp("6%") }} >
-        <Image
-            source={require("../../../assets/notif.png")}
-            style={{ width: wp("5.5%"), height: wp("5.5%"), objectFit: "contain" }}
-            resizeMode="contain"
-          />
-          <Image
-            source={require("../../../assets/account.png")}
-            style={{ width: wp("5%"), height: wp("5%"), objectFit: "contain" }}
-            resizeMode="contain"
-          />
+        <View style={{ gap: 10, flexDirection: "row", alignItems: "center", marginTop: hp("2.5%"), marginRight: wp("6%")}} >
+            <Image
+              source={require("../../../assets/notif.png")}
+              style={{ width: wp("5%"), height: wp("5%"), objectFit: "contain" }}
+              resizeMode="contain"
+            />
+            <Image
+              source={require("../../../assets/account.png")}
+              style={{ width: wp("5%"), height: wp("5%"), objectFit: "contain" }}
+              resizeMode="contain"
+            />
         </View>
       </View>
       {/* HEADER */}
@@ -256,7 +262,7 @@ const styles = StyleSheet.create({
     },
     
     headerText: {
-        width: wp("100%"),
+        width: wp("60%"),
         fontSize: wp("4.5%"),
     },
     

@@ -57,9 +57,9 @@ const Venue  = () => {
                   />
               </View>
 
-              <View>
+              {/* <View>
                 <MapView style={styles.map}/>
-              </View>
+              </View> */}
 
               <View>
                   <TouchableOpacity 

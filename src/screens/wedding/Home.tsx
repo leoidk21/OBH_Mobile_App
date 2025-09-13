@@ -17,6 +17,15 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import NavigationSlider from './ReusableComponents/NavigationSlider';
 import MenuBar from "./ReusableComponents/MenuBar";
 
+import { EventSvg } from "../icons/svg/EventSvg";
+import { ChecklistSvg } from "../icons/svg/ChecklistSvg";
+import { ScheduleSvg } from "../icons/svg/ScheduleSvg";
+import { BudgetSvg } from "../icons/svg/BudgetSvg";
+import { GuestSvg } from "../icons/svg/GuestSvg";
+import { VenueSvg } from "../icons/svg/VenueSvg";
+import { GallerySvg } from "../icons/svg/GallerySvg";
+import { AccountSvg } from "../icons/svg/AccountSvg";
+
 type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const ProgressBar = ({ progress }: { progress: number }) => {
@@ -37,14 +46,14 @@ const Home = () => {
    }
 
    const icons: IconItem[] = [
-      { label: "Event", image: require("../../assets/EVENTICON.png"), route: "Event" },
-      { label: "Checklist", image: require("../../assets/CHECKLISTICON.png"), route: "Checklist" },
-      { label: "Schedule", image: require("../../assets/SCHEDULEICON.png"), route: "Schedule" },
-      { label: "Budget", image: require("../../assets/BUDGETICON.png"), route: "Budget" },
-      { label: "Guest", image: require("../../assets/GUESTICON.png"), route: "Guest" },
-      { label: "Venue", image: require("../../assets/VENUEICON.png"), route: "Venue" },
-      { label: "Gallery", image: require("../../assets/GALLERYICON.png"), route: "Gallery" },
-      { label: "Account", image: require("../../assets/ACCOUNTICON.png"), route: "Account" },
+      { label: "Event", image: EventSvg, route: "Event" },
+      { label: "Checklist", image: ChecklistSvg, route: "Checklist" },
+      { label: "Schedule", image: ScheduleSvg, route: "Schedule" },
+      { label: "Budget", image: BudgetSvg, route: "Budget" },
+      { label: "Guest", image: GuestSvg, route: "Guest" },
+      { label: "Venue", image: VenueSvg, route: "Venue" },
+      { label: "Gallery", image: GallerySvg, route: "Gallery" },
+      { label: "Account", image: AccountSvg, route: "Account" },
    ];
 
    const [progress, setProgress] = useState(0);
@@ -112,8 +121,7 @@ const Home = () => {
                            <Text style={styles.countdown}>56</Text>
                         </View>
 
-                        <View
-                           style={styles.overlayTextBottom2}>
+                        <View style={styles.overlayTextBottom2}>
                            <Text style={styles.countdownText}>Days</Text>
                            <Text style={styles.countdownText}>Hours</Text>
                            <Text style={styles.countdownText}>Mins</Text>
@@ -139,7 +147,7 @@ const Home = () => {
                               style={styles.iconItem}
                               onPress={() => navigation.navigate(icons[index].route as never)}
                            >
-                              <Image style={styles.icon} source={item.image} />
+                              <item.image width={36} height={36} />
                               <Text style={styles.iconLabel}>{item.label}</Text>
                            </TouchableOpacity>
                         ))}
@@ -151,7 +159,7 @@ const Home = () => {
                   <View style={styles.eventType}>
                      <View>
                         <Image
-                           source={require('../../assets/HEART.png')}
+                           source={require('../../assets/WEDDING-ICON.png')}
                            style={styles.eventImage}
                         />
                      </View> 
@@ -601,28 +609,24 @@ const styles = StyleSheet.create({
    iconItem: {
       width: "25%",
       alignItems: "center",
-      marginVertical: hp("1.5%"),
-   },
-
-   icon: {
-      width: wp("10%"),
-      height: wp("10%"),
-      resizeMode: "contain",
-      marginBottom: 5,
-      objectFit: "contain",
+      justifyContent: "center",
+      marginTop: hp("1.8%"),
+      marginBottom: hp("1.5%"),
    },
 
    iconLabel: {
       width: wp("100%"),
       fontSize: wp("3%"),
       textAlign: "center",
+      marginTop: hp("0.5%"),
    },
 
    Svg: {
       marginBottom: 5,
       objectFit: "contain",
       resizeMode: "contain",
-   }
+   },
+
 });
 
 export default Home;

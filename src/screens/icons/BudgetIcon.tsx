@@ -2,8 +2,8 @@ import Svg, { Path } from "react-native-svg";
 
 export const BudgetIcon = ({ color = "gray" }: { color?: string }) => (
   <Svg
-    width="20"
-    height="20"
+    width="22"
+    height="22"
     viewBox="0 0 24 24"
     fill="none"
     preserveAspectRatio="xMidYMid meet"

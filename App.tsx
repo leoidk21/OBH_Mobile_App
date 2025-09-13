@@ -30,6 +30,10 @@ import Checklist from './src/screens/wedding/Checklist';
 import Venue from './src/screens/wedding/Venue';
 import Gallery from './src/screens/wedding/Gallery';
 import Account from './src/screens/wedding/Account';
+import Notification from './src/screens/wedding/Notification';
+import Payment from './src/screens/wedding/Payment';
+import ESignature from './src/screens/wedding/ESignature';
+import EventPrice from './src/screens/wedding/EventPrice';
 
 import { useGuestManagement } from './src/screens/wedding/Hook/useGuestManagement';
 
@@ -38,6 +42,15 @@ import MenuBar from './src/screens/wedding/ReusableComponents/MenuBar';
 
 import { HomeIcon, EventIcon, GuestIcon, ScheduleIcon, BudgetIcon, ChecklistIcon, VenueIcon }
   from "./src/screens/icons";
+
+import {EventSvg } from './src/screens/icons/svg/EventSvg';
+import {BudgetSvg } from './src/screens/icons/svg/BudgetSvg';
+import {VenueSvg } from './src/screens/icons/svg/VenueSvg';
+import { ChecklistSvg } from './src/screens/icons/svg/ChecklistSvg';
+import {GuestSvg } from './src/screens/icons/svg/GuestSvg';
+import {ScheduleSvg } from './src/screens/icons/svg/ScheduleSvg';
+import {GallerySvg } from './src/screens/icons/svg/GallerySvg';
+import { AccountSvg } from './src/screens/icons/svg/AccountSvg';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -67,6 +80,7 @@ export default function App() {
           <Stack.Screen name="ChooseEvent" component={ChooseEvent} />
           <Stack.Screen name="ClientsName" component={ClientsName} />
           <Stack.Screen name="EventDate" component={EventDate} />
+          <Stack.Screen name="EventPrice" component={EventPrice} />
 
           {/* Home Wedding */}
           <Stack.Screen name="Home" component={Home} />
@@ -78,6 +92,9 @@ export default function App() {
           <Stack.Screen name="Venue" component={Venue} />
           <Stack.Screen name="Gallery" component={Gallery} />
           <Stack.Screen name="Account" component={Account} />
+          <Stack.Screen name="Notification" component={Notification} />
+          <Stack.Screen name="Payment" component={Payment} />
+          <Stack.Screen name="ESignature" component={ESignature} />
           
           {/* Icons */}
           <Stack.Screen name="HomeIcon" component={HomeIcon} />
@@ -87,6 +104,15 @@ export default function App() {
           <Stack.Screen name="BudgetIcon" component={BudgetIcon} />
           <Stack.Screen name="VenueIcon" component={VenueIcon} />
           <Stack.Screen name="ChecklistIcon" component={ChecklistIcon} />
+
+          <Stack.Screen name="EventSvg" component={EventSvg} />
+          <Stack.Screen name="ChecklistSvg" component={ChecklistSvg} />
+          <Stack.Screen name="BudgetSvg" component={BudgetSvg} />
+          <Stack.Screen name="VenueSvg" component={VenueSvg} />
+          <Stack.Screen name="GuestSvg" component={GuestSvg} />
+          <Stack.Screen name="ScheduleSvg" component={ScheduleSvg} />
+          <Stack.Screen name="GallerySvg" component={GallerySvg} />
+          <Stack.Screen name="AccountSvg" component={AccountSvg} />
 
           <Stack.Screen name="NavigationSlider" component={NavigationSlider} />
           

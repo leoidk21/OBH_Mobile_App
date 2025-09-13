@@ -15,6 +15,7 @@ export type RootStackParamList = {
   ChooseEvent: undefined;
   ClientsName: undefined;
   EventDate: undefined;
+  EventPrice: undefined;
 
   Home: undefined;
   Event: undefined;
@@ -25,6 +26,9 @@ export type RootStackParamList = {
   Venue: undefined;
   Gallery: undefined;
   Account: undefined;
+  ESignature: undefined;
+  Notification: undefined;
+  Payment: undefined;
 
   HomeIcon: undefined;
   EventIcon: undefined;
@@ -33,6 +37,15 @@ export type RootStackParamList = {
   BudgetIcon: undefined;
   VenueIcon: undefined;
   ChecklistIcon: undefined;
+
+  EventSvg: undefined;
+  ChecklistSvg: undefined;
+  BudgetSvg: undefined;
+  VenueSvg: undefined;
+  GuestSvg: undefined;
+  ScheduleSvg: undefined;
+  GallerySvg: undefined;
+  AccountSvg: undefined;
   
   useGuestManagement: undefined;
   NavigationSlider: undefined;
