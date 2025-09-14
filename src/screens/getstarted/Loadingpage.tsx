@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     textAlign: 'center',
     marginTop: hp('-16%'),
+    fontFamily: 'Poppins',
   },
 });
 

@@ -35,24 +35,24 @@ const SignUp = () => {
 
           <View style={styles.formContainer}>
             <TextInput
-              placeholder='Full Name' 
-              value={name}
-              onChangeText={(text) => setName(text)}
-              style={styles.textInput}
+                placeholder='Full Name' 
+                value={name}
+                onChangeText={(text) => setName(text)}
+                style={styles.textInput}
             />
 
             <TextInput
-              placeholder='Email' 
-              value={email}
-              onChangeText={(text) => setEmail(text)}           
-              style={styles.textInput}
+                placeholder='Email' 
+                value={email}
+                onChangeText={(text) => setEmail(text)}           
+                style={styles.textInput}
             />
 
             <TextInput
-              placeholder='Password' 
-              value={password}
-              onChangeText={(text) => setPassword(text)} 
-              style={styles.textInput}          
+                placeholder='Password' 
+                value={password}
+                onChangeText={(text) => setPassword(text)} 
+                style={styles.textInput}          
             />
             <TouchableOpacity 
                 style={styles.submitBtn}
@@ -184,11 +184,11 @@ const styles = StyleSheet.create({
     width: wp('80%'),
     alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'center',
     borderRadius: wp('50%'),
-    backgroundColor: colors.white,
+    justifyContent: 'center',
     paddingHorizontal: wp('5%'),
     paddingVertical: hp('1.6%'),
+    backgroundColor: colors.white,
   },  
 
   facebookBtn: {
@@ -204,7 +204,6 @@ const styles = StyleSheet.create({
   },
 
   googleText: {
-    width: wp('100%'),
     textAlign: 'center',
   },
 
@@ -214,7 +213,6 @@ const styles = StyleSheet.create({
   },
 
   facebookText: {
-    width: wp('100%'),
     textAlign: 'center',
     color: colors.white,
   },

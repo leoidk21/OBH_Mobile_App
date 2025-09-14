@@ -41,7 +41,9 @@ const MenuBar: React.FC<MenuBarProps> = ({ activeScreen }) => {
             onPress={() => navigation.navigate(item.screen as never)}
           >
             {active && <View style={styles.navigationLine} />}
-            <Icon color={active ? "#000000" : "gray"} />
+            <Icon 
+              color={active ? "#000000" : "gray"} 
+            />
             <Text style={active ? styles.activeText : styles.inactiveText}>
               {item.label}
             </Text>
@@ -59,10 +61,10 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 10,
+    height: 'auto',
     width: wp("100%"),
-    padding: wp("2.2%"),
     flexDirection: "row",
-    paddingBottom: hp("1.5%"),
+    paddingVertical: hp("1.2%"),
     backgroundColor: colors.white,
     justifyContent: "space-between",
   },
@@ -86,15 +88,17 @@ const styles = StyleSheet.create({
       
   inactiveText: {
     color: "gray",
+    top: hp("0.5%"),
     fontSize: wp("3%"),
     textAlign: "center",
-    marginTop: hp("0.5%"),
+    fontFamily: "Poppins",
   },
       
   activeText: {
+    top: hp("0.5%"),
     fontSize: wp("3%"),
     textAlign: "center",
-    marginTop: hp("0.5%"),
+    fontFamily: "Poppins",
   },
 });
 

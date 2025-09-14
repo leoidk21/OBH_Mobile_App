@@ -17,8 +17,10 @@ import ResetPass from './src/screens/auth/ResetPass';
 
 {/* Setting Up */}
 import ChooseEvent from './src/screens/settingUp/ChooseEvent';
-import ClientsName from './src/screens/wedding/ClientsName';
-import EventDate from './src/screens/wedding/EventDate';
+import EventPrice from './src/screens/settingUp/EventPrice';
+import ClientsName from './src/screens/settingUp/ClientsName';
+import EventDate from './src/screens/settingUp/EventDate';
+import CompanyPolicy from './src/screens/settingUp/CompanyPolicy';
 
 {/* Home Wedding */}
 import Home from './src/screens/wedding/Home';
@@ -33,7 +35,7 @@ import Account from './src/screens/wedding/Account';
 import Notification from './src/screens/wedding/Notification';
 import Payment from './src/screens/wedding/Payment';
 import ESignature from './src/screens/wedding/ESignature';
-import EventPrice from './src/screens/wedding/EventPrice';
+
 
 import { useGuestManagement } from './src/screens/wedding/Hook/useGuestManagement';
 
@@ -43,13 +45,13 @@ import MenuBar from './src/screens/wedding/ReusableComponents/MenuBar';
 import { HomeIcon, EventIcon, GuestIcon, ScheduleIcon, BudgetIcon, ChecklistIcon, VenueIcon }
   from "./src/screens/icons";
 
-import {EventSvg } from './src/screens/icons/svg/EventSvg';
-import {BudgetSvg } from './src/screens/icons/svg/BudgetSvg';
-import {VenueSvg } from './src/screens/icons/svg/VenueSvg';
+import { EventSvg } from './src/screens/icons/svg/EventSvg';
+import { BudgetSvg } from './src/screens/icons/svg/BudgetSvg';
+import { VenueSvg } from './src/screens/icons/svg/VenueSvg';
 import { ChecklistSvg } from './src/screens/icons/svg/ChecklistSvg';
-import {GuestSvg } from './src/screens/icons/svg/GuestSvg';
-import {ScheduleSvg } from './src/screens/icons/svg/ScheduleSvg';
-import {GallerySvg } from './src/screens/icons/svg/GallerySvg';
+import { GuestSvg } from './src/screens/icons/svg/GuestSvg';
+import { ScheduleSvg } from './src/screens/icons/svg/ScheduleSvg';
+import { GallerySvg } from './src/screens/icons/svg/GallerySvg';
 import { AccountSvg } from './src/screens/icons/svg/AccountSvg';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -81,6 +83,7 @@ export default function App() {
           <Stack.Screen name="ClientsName" component={ClientsName} />
           <Stack.Screen name="EventDate" component={EventDate} />
           <Stack.Screen name="EventPrice" component={EventPrice} />
+          <Stack.Screen name="CompanyPolicy" component={CompanyPolicy} />
 
           {/* Home Wedding */}
           <Stack.Screen name="Home" component={Home} />

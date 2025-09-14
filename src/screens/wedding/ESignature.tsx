@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     introText: {
         fontSize: wp("4.5%"),
         textAlign: "center",
+        fontFamily: "Poppins",
         marginHorizontal: wp("10%"),
     },
 

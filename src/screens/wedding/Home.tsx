@@ -99,37 +99,30 @@ const Home = () => {
                      showsVerticalScrollIndicator={false}
                   >
                   {/* COUNTDOWN */}
-                  <View style={{ alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}>
-                     <View style={{ alignItems: "center", justifyContent: "center", position: "relative" }}>
+                  <View style={styles.countDownContainer}>
+                     <View style={styles.countDownContent}>
                         <Image
-                           source={require("../../assets/WEDDINGIMG.png")}
-                           style={{
-                              width: wp("88%"),
-                              height: wp("50%"),
-                              marginTop: hp("2.5%"),
-                              borderRadius: wp("2.5%"),
-                           }}
+                              source={require("../../assets/WEDDINGIMG.png")}
+                              style={styles.weddingImage}
                         />
-                        <View style={styles.beforeImage}/>
-                        <Text style={styles.overlayTextTop}>
-                           Partner & Partner
-                        </Text>
+                        <View style={styles.beforeImage} />
+                        <Text style={styles.overlayTextTop}>Partner & Partner</Text>
                         <View style={styles.overlayTextBottom}>
-                           <Text style={styles.countdown}>12.</Text>
-                           <Text style={styles.countdown}>02.</Text>
-                           <Text style={styles.countdown}>19.</Text>
-                           <Text style={styles.countdown}>56</Text>
+                              <Text style={styles.countdown}>12.</Text>
+                              <Text style={styles.countdown}>02.</Text>
+                              <Text style={styles.countdown}>19.</Text>
+                              <Text style={styles.countdown}>56</Text>
                         </View>
 
                         <View style={styles.overlayTextBottom2}>
-                           <Text style={styles.countdownText}>Days</Text>
-                           <Text style={styles.countdownText}>Hours</Text>
-                           <Text style={styles.countdownText}>Mins</Text>
-                           <Text style={styles.countdownText}>Secs</Text>
+                              <Text style={styles.countdownText}>Days</Text>
+                              <Text style={styles.countdownText}>Hours</Text>
+                              <Text style={styles.countdownText}>Mins</Text>
+                              <Text style={styles.countdownText}>Secs</Text>
                         </View>
 
                         <View style={styles.overlayTextBottom3}>
-                           <Text style={styles.countdownDate}>06/06/2025</Text>
+                              <Text style={styles.countdownDate}>06/06/2025</Text>
                         </View>
                      </View>
                   </View>
@@ -163,12 +156,12 @@ const Home = () => {
                            style={styles.eventImage}
                         />
                      </View> 
-                     <View>
-                        <Text style={{ fontSize: wp("4%"), width: wp("100%") }}>Intimate Wedding</Text>  
-                        <Text style={{ fontSize: wp("3.2%") }}>Partner & Partner</Text>    
+                     <View style={styles.weddingTypeContainer}>
+                        <Text style={[styles.weddingType, styles.weddingTypeText]}>Intimate Wedding</Text>  
+                        <Text style={styles.weddingType}>Partner & Partner</Text>    
                      </View>
-                     <View style={styles.eventDate}>
-                        <Text style={{ fontSize: wp("3.2%") }}>16/06/2025</Text>
+                     <View style={styles.eventDateContainer}>
+                        <Text style={styles.eventDate}>16/06/2025</Text>
                      </View>
                   </View>
                   {/* EVENT TYPE & DATE */}
@@ -260,11 +253,79 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
+   countDownContainer: {
+      alignItems: "center", 
+      justifyContent: "center", 
+      position: "relative",
+   },
+
+   countDownContent: {
+      alignItems: "center", 
+      justifyContent: "center", 
+      position: "relative"
+   },
+
+   weddingImage: {
+      width: wp("88%"),
+      height: wp("50%"),
+      marginTop: hp("2.5%"),
+      borderRadius: wp("2.5%"),
+   },
+
+   eventType: {
+      gap: wp("3%"),
+      marginTop: hp("1.5%"),
+      flexDirection: "row",
+      alignItems: "center",
+      borderRadius: wp("2.5%"),  
+      marginHorizontal: wp("6%"),
+      paddingHorizontal: wp("5%"),   
+      backgroundColor: colors.white,
+   },
+
+   eventImage: {
+      width: wp("8.5%"),
+      height: hp("8.5%"),
+      objectFit: "contain",
+      borderRadius: wp("50%"),
+   },
+
+   eventDateContainer: {
+      bottom: 10,
+      right: 15,
+      position: "absolute",
+   },
+
+   eventDate: {
+      fontFamily: "Poppins",
+   },
+
+   weddingType: {
+      fontFamily: "Poppins",
+   },
+
+   weddingTypeText: {
+      fontWeight: "600",
+      fontSize: wp("4%"),
+      top: hp("0.5%"),
+   },
+
+   weddingTypeContainer: {
+      margin: 0,
+      padding: 0,
+      flexDirection: "column",
+   },
+
+   eventDateText: {
+      fontSize: wp("3.2%"),
+      fontFamily: "Poppins",
+   },
+
    radioUnchecked: {
       borderWidth: 2,
-      width: 24,                      // same width & height
+      width: 24,
       height: 24,
-      borderRadius: 12,               // half of width/height = circle
+      borderRadius: 12,
       borderColor: colors.button,
       alignItems: "center",
       justifyContent: "center",
@@ -274,7 +335,7 @@ const styles = StyleSheet.create({
       width: 24,
       height: 24,
       borderWidth: 2,
-      borderRadius: 12,               // circle
+      borderRadius: 12,
       borderColor: colors.button,
       alignItems: "center",
       justifyContent: "center",
@@ -303,10 +364,12 @@ const styles = StyleSheet.create({
    progressText: {
       color: colors.black,
       marginTop: hp("0.8%"),
+      fontFamily: "Poppins",
       paddingHorizontal: wp("1.5%"),
    },
   
    checkListItems: {
+      marginTop: hp("1.5%"),
       paddingHorizontal: wp("1%"),
    },
 
@@ -328,6 +391,7 @@ const styles = StyleSheet.create({
    checkListText: {
       fontWeight: "600",
       fontSize: wp("4.2%"), 
+      fontFamily: "Poppins",
    },
 
    viewAll: {
@@ -338,38 +402,14 @@ const styles = StyleSheet.create({
    viewAllText: {
       marginRight: wp("1%"),
       fontSize: wp("3.6%"),
+      fontFamily: "Poppins",
    },
 
    checkListLine: {
       width: wp("82%"),
       height: hp("0.1%"),
       alignSelf: "center",
-      marginVertical: hp("0.8%"),
       backgroundColor: colors.borderv3,
-   },
-
-   eventType: {
-      gap: wp("3%"),
-      marginTop: hp("1.5%"),
-      flexDirection: "row",
-      alignItems: "center",
-      borderRadius: wp("2.5%"),  
-      marginHorizontal: wp("6%"),
-      paddingHorizontal: wp("5%"),   
-      backgroundColor: colors.white,
-   },
-
-   eventImage: {
-      width: wp("8.5%"),
-      height: hp("8.5%"),
-      objectFit: "contain",
-      borderRadius: wp("50%"),
-   },
-
-   eventDate: {
-      right: 15,
-      bottom: 12,
-      position: "absolute",
    },
 
    navigationContainer: {
@@ -433,6 +473,7 @@ const styles = StyleSheet.create({
       fontSize: wp("5.5%"),
       position: "absolute",
       alignSelf: "center",
+      fontFamily: "Loviena",
    },
 
    overlayTextBottom: {
@@ -465,11 +506,13 @@ const styles = StyleSheet.create({
    countdown: {
       color: "white",
       fontSize: wp("8%"),
+      fontFamily: "Poppins",
    },
 
    countdownText: {
       color: "white",
       fontSize: wp("4.5%"),
+      fontFamily: "Poppins",
    },
 
    countdownDate: {
@@ -619,6 +662,7 @@ const styles = StyleSheet.create({
       fontSize: wp("3%"),
       textAlign: "center",
       marginTop: hp("0.5%"),
+      fontFamily: "Poppins",
    },
 
    Svg: {

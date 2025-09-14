@@ -25,23 +25,16 @@ const Gallery  = () => {
           </View>
           {/* HEADER */}
           {/* ===== CONTENT ===== */}
-          <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: hp("9%") }}>
-            <View style={styles.galleryHeader}>
-              <LinearGradient
-                colors={["#fbe6e4ff", "#faeeeeff", "#e5c699ff"]}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={styles.galleryHeaderGradient}
-              >
-                <Text style={styles.galleryHeaderText}>Media Collection</Text>
-                <Text style={styles.galleryHeaderSubText}>Your event memories, all in one place.</Text>
-              </LinearGradient>
-            </View>
+          <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: hp("8%") }}>
+              <View style={styles.galleryHeader}>
+                  <Text style={styles.galleryHeaderText}>Media Collection</Text>
+                  <Text style={styles.galleryHeaderSubText}>Your event memories, all in one place.</Text>
+              </View>
 
             {/* PHOTOS CONTAINER */}
             <View style={styles.imageContainer}>
               <View style={styles.imageHeader}>
-                <Text style={styles.imageHeaderText}>Photos</Text>
+                <Text style={styles.imageHeaderText}>Photo</Text>
                 <TouchableOpacity
                   style={styles.seeMoreButton}
                 >
@@ -81,7 +74,7 @@ const Gallery  = () => {
             {/* VIDEOS CONTAINER */}
             <View style={[styles.imageContainer, styles.videosContainer]}>
               <View style={styles.imageHeader}>
-                <Text style={styles.imageHeaderText}>Videos</Text>
+                <Text style={styles.imageHeaderText}>Video</Text>
               </View>
 
               {/* VIDEOS GRID */}
@@ -124,23 +117,16 @@ const styles = StyleSheet.create({
   galleryHeader: {
     marginTop: hp('2%'),
     marginHorizontal: wp('6%'),
-  },
-  
-  galleryHeaderGradient: {
-    width: wp('90%'),
-    alignSelf: 'center',
-    paddingLeft: wp('5%'),
-    borderRadius: wp('5%'),
-    paddingVertical: hp('2%'),
-    backgroundColor: colors.facebookBtn2,
+
+    borderBottomWidth: 1,
+    paddingBottom: hp('2%'),
+    borderColor: colors.borderv2,
   },
 
   galleryHeaderText: {
     fontSize: wp('6%'),
-    textShadowRadius: 3,
     color: colors.brown,
-    textShadowColor: 'rgba(169, 169, 169, 0.25)',
-    textShadowOffset: { width: 1, height: 1 },
+    fontFamily: "Loviena",
   },
 
   galleryHeaderSubText: {
@@ -169,6 +155,7 @@ const styles = StyleSheet.create({
   imageHeaderText: {
     fontWeight: "500",
     fontSize: wp('5.5%'),
+    fontFamily: "Loviena",
   },
 
   photosItems: {

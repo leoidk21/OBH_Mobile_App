@@ -344,17 +344,20 @@ const styles = StyleSheet.create({
   userProfile: {
     width: wp('20%'),
     height: wp('20%'),
+    marginTop: hp('0.5%'),
     marginBottom: hp('1.5%'),
   },
 
   profileName: {
     fontWeight: '600',
     fontSize: wp('4.5%'),
-    marginBottom: hp('0.5%'),
+    fontFamily: 'Loviena',
+    marginTop: hp('0.5%'),
   },
 
   profileEmail: {
     fontSize: wp('3.5%'),
+    fontFamily: 'Poppins',
     color: colors.borderv4,
     marginBottom: hp('0.5%'),
   },
@@ -368,10 +371,12 @@ const styles = StyleSheet.create({
   },
 
   editProfileText: {
+    fontFamily: 'Poppins',
     color: colors.black,
   },
 
   personalInfo: {
+    fontFamily: 'Poppins',
     marginHorizontal: wp('6%'),
   },
 

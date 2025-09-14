@@ -273,9 +273,9 @@ const styles = StyleSheet.create({
    },
 
     checkListHeaderText: {
-      fontWeight: "600",
+      fontSize: wp("6%"),
       color: colors.black,
-      fontSize: wp("5.5%"),
+      fontFamily: "Loviena",
     },
 
     buttonContainer: {

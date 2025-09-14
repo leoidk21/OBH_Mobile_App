@@ -437,9 +437,9 @@ const styles = StyleSheet.create({
     },
 
     titleText: {
-        fontSize: wp("5%"),
-        fontWeight: "600",
-        color: colors.button,
+        fontSize: wp('6%'),
+        color: colors.brown,
+        fontFamily: "Loviena",
     },
 
     dateContainer: {
@@ -455,6 +455,7 @@ const styles = StyleSheet.create({
     dateText: {
         textAlign: "center",    
         color: colors.white,
+        fontFamily: "Poppins",
     },
 
     buttonContainer: {

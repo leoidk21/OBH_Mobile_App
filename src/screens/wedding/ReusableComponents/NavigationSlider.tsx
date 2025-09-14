@@ -6,7 +6,7 @@ import {
 } from "react-native-responsive-screen";
 import { RootStackParamList } from "../../../screens/type";
 import colors from "../../config/colors";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 
 // ICONS
@@ -20,6 +20,10 @@ import { ChecklistIcon } from "../../icons/ChecklistIcon";
 
 const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const route = useRoute();
+
+  const currentScreen = route.name;
 
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const slideAnimation = useRef(new Animated.Value(-wp("80%"))).current;
@@ -131,29 +135,28 @@ const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) =
   return (
     <View>
       {/* HEADER */}
-      <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }} >
-        <View style={{  gap: 8, flexDirection: "row", alignItems: "center", marginTop: hp("2.5%"), marginLeft: wp("6%") }} >
+      <View style={styles.headerContainer} >
+        <View style={styles.openSliderContainer} >
           <TouchableOpacity onPress={openSlider}>
             <Image
-              source={require("../../../assets/burger.png")}
-              style={{ width: wp("5.5%"), height: wp("5.5%"), objectFit: "contain" }}
               resizeMode="contain"
-              
+              style={styles.openSliderPng}
+              source={require("../../../assets/burger.png")}
             />
           </TouchableOpacity> 
           <Text style={styles.headerText}>{headerTitle ?? ""}</Text>
         </View>
 
-        <View style={{ gap: 10, flexDirection: "row", alignItems: "center", marginTop: hp("2.5%"), marginRight: wp("6%")}} >
+        <View style={styles.notifAccountContainer} >
             <Image
-              source={require("../../../assets/notif.png")}
-              style={{ width: wp("5%"), height: wp("5%"), objectFit: "contain" }}
               resizeMode="contain"
+              style={styles.notifAccPng}
+              source={require("../../../assets/notif.png")}
             />
             <Image
-              source={require("../../../assets/account.png")}
-              style={{ width: wp("5%"), height: wp("5%"), objectFit: "contain" }}
               resizeMode="contain"
+              style={styles.notifAccPng}
+              source={require("../../../assets/account.png")}
             />
         </View>
       </View>
@@ -162,45 +165,31 @@ const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) =
       {/* SIDEBAR */}
       <>
         {sidebarVisible && (
-          <Animated.View
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: wp("100%"),
-              height: hp("100%"),
-              backgroundColor: "rgba(0,0,0,0.2)",
-              opacity: overlayAnimation,
-              zIndex: 999,
-            }}
-          >
+          <Animated.View style={[styles.sideBarVisibleContainer, { opacity: overlayAnimation }]}>
             <TouchableOpacity
-              style={{ width: "100%", height: "100%" }}
+              style={styles.closeSliderBtn}
               onPress={closeSlider}
               activeOpacity={1}
             />
           </Animated.View>
         )}
 
-        <Animated.View
-          style={{
-            position: "absolute",
-            top: 0,
-            left: slideAnimation,
-            width: wp("80%"),
-            height: hp("100%"),
-            zIndex: 1000,
-            backgroundColor: "rgba(0,0,0,0.5)",
-          }}
-        >
-          <LinearGradient colors={["#fffefeff", "#f8f0e3ff"]} style={styles.sidebarContainer}>
-            <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+        <Animated.View style={[styles.sideBarVisible, { left: slideAnimation }]} >
+          <LinearGradient 
+            colors={["#fffefeff", "#f8f0e3ff"]} 
+            style={styles.sidebarContainer}
+          >
+            <ScrollView 
+              contentContainerStyle={{ flexGrow: 1, paddingBottom: hp("2%") }}
+              showsVerticalScrollIndicator={false} 
+              showsHorizontalScrollIndicator={false} 
+            >
               {/* SIDEBAR HEADER */}
               <View style={styles.closeButton}>
                 <TouchableOpacity onPress={closeSlider}>
                   <Image
                     source={require("../../../assets/burger.png")}
-                    style={{ width: wp("5.5%"), height: wp("5.5%"), objectFit: "contain" }}
+                    style={styles.openSliderPng}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>
@@ -210,8 +199,8 @@ const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) =
 
               {/* PROFILE */}
               <View style={styles.sidebarContent}>
-                <View style={{ marginLeft: wp("6%"), paddingBottom: hp("2.5%") }}>
-                  <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+                <View style={styles.sideBarProfileContainer}>
+                  <View style={styles.sideBarProfile}>
                     <Image
                       style={styles.profilePic}
                       source={require("../../../assets/PROFILEPIC.png")}
@@ -231,16 +220,24 @@ const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) =
                 <View style={styles.sidebarMenu}>
                   <Text style={styles.menuHeader}>Main Menu</Text>
                   {mainMenu.map((item, idx) => (
-                    <MenuItem key={idx} {...item} />
+                    <MenuItem
+                      key={idx}
+                      {...item}
+                      active={currentScreen === item.screen}
+                    />
                   ))}
                 </View>
 
                 {/* ACCOUNT MENU */}
                 <View>
                   <Text style={styles.accMenuHeader}>Account</Text>
-                  {accountMenu.map((item, idx) => (
-                    <MenuItem key={idx} {...item} />
-                  ))}
+                    {accountMenu.map((item, idx) => (
+                      <MenuItem
+                        key={idx}
+                        {...item}
+                        active={currentScreen === item.screen}
+                      />
+                    ))}
                 </View>
               </View>
             </ScrollView>
@@ -253,6 +250,75 @@ const NavigationSlider: React.FC<{ headerTitle?: string }> = ({ headerTitle }) =
 };
 
 const styles = StyleSheet.create({
+    headerContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+    },
+
+    openSliderContainer: {
+        gap: 8,
+        flexDirection: "row",
+        alignItems: "center",
+        marginTop: hp("2.5%"),
+        marginLeft: wp("6%"),
+    },
+
+    notifAccountContainer: {
+        gap: 10,
+        flexDirection: "row",
+        alignItems: "center",
+        marginTop: hp("2.5%"),
+        marginRight: wp("6%"),
+    },
+
+    notifAccPng: {
+        width: wp("5%"),
+        height: wp("5%"),
+        objectFit: "contain",
+    },
+
+    openSliderPng: {
+        width: wp("5.5%"),
+        height: wp("5.5%"),
+        objectFit: "contain",
+    },
+
+    sideBarVisibleContainer: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: wp("100%"),
+        height: hp("100%"),
+        backgroundColor: "rgba(0,0,0,0.2)",
+        zIndex: 999,
+    },
+
+    sideBarVisible: {
+        position: "absolute",
+        top: 0,
+        width: wp("80%"),
+        height: hp("100%"),
+        zIndex: 1000,
+        backgroundColor: "rgba(0,0,0,0.5)",
+    },
+
+    sideBarProfileContainer: {
+        marginLeft: wp("6%"),
+        paddingBottom: hp("2.5%"),
+    },
+
+    sideBarProfile: {
+        gap: 10,
+        alignItems: "center",
+        flexDirection: "row",
+    },
+
+    closeSliderBtn: {
+        width: "100%",
+        height: "100%",
+    },
+
     closeButton: {
         gap: 12,
         flexDirection: "row",
@@ -262,6 +328,8 @@ const styles = StyleSheet.create({
     },
     
     headerText: {
+        top: hp("0.4%"),  
+        fontFamily: "Poppins",
         width: wp("60%"),
         fontSize: wp("4.5%"),
     },
@@ -278,11 +346,11 @@ const styles = StyleSheet.create({
 
     menuIndicatorActive: {
         width: wp("70%"),
-        height: hp("7%"),  
         alignSelf: "center",
-        padding: wp("2.5%"),
         borderRadius: wp("2%"),
         justifyContent: "center",
+        paddingVertical: hp("1.5%"),
+        paddingHorizontal: wp("2.5%"),
         backgroundColor: colors.borderv2,
     },
 
@@ -295,11 +363,13 @@ const styles = StyleSheet.create({
 
     menuHeader: {
         marginLeft: wp("6%"),
-        marginBottom: hp("2%"),
         fontSize: wp("4.5%"),
+        fontFamily: "Poppins",
+        marginBottom: hp("1.5%"),
     },
 
     accMenuHeader: {
+        fontFamily: "Poppins",
         marginLeft: wp("6%"),
         marginBottom: hp("1%"),
         fontSize: wp("4.5%"),
@@ -319,7 +389,7 @@ const styles = StyleSheet.create({
 
     sidebarMenu: {
         marginTop: hp("2.5%"),
-        marginBottom: hp("2.5%"),
+        marginBottom: hp("2%"),
     },
 
     menuItem: {
@@ -327,7 +397,10 @@ const styles = StyleSheet.create({
     },
 
     menuText: {
+        top: hp("0.5%"),
+        color: colors.black,
         fontSize: wp("4%"),
+        fontFamily: "Poppins",
     },
 
     menuSubItem: {
@@ -349,13 +422,17 @@ const styles = StyleSheet.create({
     },
 
     profileName: {
-        fontSize: wp("4%"),
+        top: hp("0.5%"),
         fontWeight: "600",
+        fontSize: wp("4%"),
+        fontFamily: "Loviena",
     },
 
     profileEmail: {
+        top: hp("0.5%"),
         width: wp("45%"),
         fontSize: wp("3.2%"),
+        fontFamily: "Poppins",
     },
 });
 

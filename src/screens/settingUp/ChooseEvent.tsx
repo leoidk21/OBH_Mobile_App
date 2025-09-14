@@ -52,7 +52,7 @@ const ChooseEvent = () => {
               >
                 <TouchableOpacity
                   style={styles.btnLink}
-                  onPress={() => handleOptionPress("ClientsName")}
+                  onPress={() => handleOptionPress("EventPrice")}
                 >
                   <Text style={styles.btnText}>Grand Wedding</Text>
                 </TouchableOpacity>
@@ -91,13 +91,10 @@ const ChooseEvent = () => {
 
         <SafeAreaView style={{ flex: 1 }}>
           <LinearGradient
-            colors={["#FFFFFF", "#f2e8e2ff"]}
-            style={styles.container}
+              colors={["#FFFFFF", "#f2e8e2ff"]}
+              style={styles.container}
             >
-              
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-              >
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <View>
                 <TouchableOpacity
                   style={styles.backBtn}
@@ -112,66 +109,21 @@ const ChooseEvent = () => {
               </View>
 
               <View style={styles.step}>
-                <View
-                  style={{
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: wp("20%"),
-                    height: hp("0.8%"),
-                    borderRadius: 50,
-                    backgroundColor: colors.brown,
-                  }}>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: wp("20%"),
-                    height: hp("0.8%"),
-                    borderRadius: 50,
-                    backgroundColor: colors.border,
-                  }}>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: wp("20%"),
-                    height: hp("0.8%"),
-                    borderRadius: 50,
-                    backgroundColor: colors.border,
-                  }}>
-                </View>
+                  <View style={[styles.stepDot, { backgroundColor: colors.brown }]} />
+                  <View style={[styles.stepDot, { backgroundColor: colors.border }]} />
+                  <View style={[styles.stepDot, { backgroundColor: colors.border }]} />
+                  <View style={[styles.stepDot, { backgroundColor: colors.border }]} />
               </View>
 
               <View>
-                <Text
-                  style={{
-                    top: hp("2%"),
-                    right: wp("6%"),
-                    fontSize: wp("4%"),
-                    color: colors.brown,
-                  }}
-                >
-                  1/3
+                <Text style={styles.stepText}>
+                  1/4
                 </Text>
               </View>
             </View>
 
             <View style={styles.topContent}>
-              <Text
-                style={{
-                  fontSize: wp("8%"),
-                  marginTop: hp("1%"),
-                  textAlign: "left",
-                  left: wp("6%"),
-                  fontFamily: "Loviena",
-                  color: colors.black,
-                  lineHeight: wp("8%"),
-                }}
-              >
+              <Text style={styles.topContentText}>
                 Select{"\n"}Event Type
               </Text>
             </View>
@@ -294,7 +246,6 @@ const styles = StyleSheet.create({
 
   topContent: {
     marginTop: hp("3%"),
-    marginBottom: hp("1%"),
     justifyContent: "center",
   },
 
@@ -302,6 +253,32 @@ const styles = StyleSheet.create({
     gap: wp("3%"),
     flexDirection: "row",
     marginTop: hp("3.2%"),
+  },
+
+  stepDot: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: wp("15%"),
+    height: hp("0.8%"),
+    borderRadius: 50,
+  },
+
+  stepText: {
+    top: hp("2%"), 
+    right: wp("6%"), 
+    fontSize: wp("4%"), 
+    color: colors.brown
+  },
+
+  topContentText: {
+    fontSize: wp("8%"),
+    marginTop: hp("1%"),
+    textAlign: "left",
+    left: wp("6%"),
+    fontFamily: "Loviena",
+    color: colors.black,
+    lineHeight: wp("8%"),
+    height: hp("9%"),
   },
 
   weddingContainer: {
@@ -409,15 +386,16 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: wp('6%'),
     textAlign: 'center',
+    fontFamily: 'Loviena',
     marginBottom: hp('1.5%'),
   },
   
   btnLink: {
     width: wp('75%'),
-    borderRadius: 18,
     margin: hp('1%'),
     alignItems: 'center',
-    paddingVertical: hp('0.4%'), 
+    borderRadius: wp('50%'),
+    paddingVertical: hp('0.12%'), 
   },
   
   btnText: {
@@ -425,6 +403,7 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     fontSize: wp('4%'),
     textAlign: 'center',
+    fontFamily: 'Poppins',
   },
 
 });

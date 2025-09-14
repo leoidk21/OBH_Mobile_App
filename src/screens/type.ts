@@ -16,6 +16,7 @@ export type RootStackParamList = {
   ClientsName: undefined;
   EventDate: undefined;
   EventPrice: undefined;
+  CompanyPolicy: undefined;
 
   Home: undefined;
   Event: undefined;

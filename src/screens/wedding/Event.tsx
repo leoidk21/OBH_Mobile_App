@@ -28,7 +28,6 @@ const Event = () => {
                     </View>
                     {/* HEADER */}
                     <ScrollView>
-                        
                         {/* CONTENT */}
                         <View style={styles.header}>
                             <Text style={styles.highlightText}>Your current event</Text>
@@ -37,7 +36,7 @@ const Event = () => {
                             <View style={styles.dividerContainer}></View>
                             <View style={styles.event}>
                                 <Image
-                                    source={require("../../assets/WEDDING.png")}
+                                    source={require("../../assets/WEDDING-ICON.png")}
                                     style={styles.eventImage}
                                 />
                                 <View>
@@ -55,7 +54,7 @@ const Event = () => {
                                         style={{ width: wp("5%"), height: hp("5%") }}
                                         resizeMode="contain"
                                     />
-                                    <Text>Date: Not yet specified</Text>
+                                    <Text style={[styles.eventDescription, styles.eventDescriptionText]}>Date: Not yet specified</Text>
                                 </View>
                                 <View style={styles.eventDetails}>
                                     <Image
@@ -63,7 +62,7 @@ const Event = () => {
                                         style={{ width: wp("5%"), height: hp("5%") }}
                                         resizeMode="contain"
                                     />
-                                    <Text>Time: Not yet specified</Text>
+                                    <Text style={[styles.eventDescription, styles.eventDescriptionText]}>Time: Not yet specified</Text>
                                 </View>
                                 <View style={styles.eventDetails}>
                                     <Image
@@ -71,7 +70,7 @@ const Event = () => {
                                         style={{ width: wp("5%"), height: hp("5%") }}
                                         resizeMode="contain"
                                     />
-                                    <Text>Venue: Not yet specified</Text>
+                                    <Text style={[styles.eventDescription, styles.eventDescriptionText]}>Venue: Not yet specified</Text>
                                 </View>
                             </View>
                         </View>
@@ -315,16 +314,17 @@ const styles = StyleSheet.create({
     },
 
     highlightText: {
-        fontWeight: "600",
-        fontSize: wp("4.5%"),
+        fontSize: wp('6%'),
+        color: colors.brown,
+        fontFamily: "Loviena",
     },
 
     content: {
+        height: 'auto',
         width: wp("90%"),
-        height: hp("32%"),
         alignSelf: "center",
         marginTop: hp("2%"),
-        paddingTop: wp("6%"),
+        paddingTop: wp("3%"),
         borderRadius: wp("4%"),
         paddingBottom: wp("2%"),
         paddingHorizontal: wp("6%"),
@@ -335,11 +335,13 @@ const styles = StyleSheet.create({
     
     dividerContainer: {
         width: wp("3%"),
-        height: hp("32%"),
+        top: 0,
+        left: 0,
+        bottom: 0,
         position: "absolute",
         borderTopLeftRadius: wp("2%"),
         borderBottomLeftRadius: wp("2%"),
-        backgroundColor: colors.indicator,
+        backgroundColor: colors.checklistv2,
     },
     
     eventImage: {
@@ -356,14 +358,20 @@ const styles = StyleSheet.create({
     },
 
     eventTitle: {
+        top: hp("0.5%"),
+        fontWeight: "600",
         fontSize: wp("4.5%"),
+        fontFamily: "Poppins",
     },
 
     eventDescription: {
         width: wp("60%"),
         fontSize: wp("3.5%"),
-        marginTop: hp("0.2%"),
-        fontFamily: "Poppins-Regular",
+        fontFamily: "Poppins",
+    },
+
+    eventDescriptionText: {
+        marginTop: hp("0.5%"),
     },
 
     eventDetails: {
@@ -391,7 +399,8 @@ const styles = StyleSheet.create({
 
     otherEventsText: {
         fontWeight: "600",
-        fontSize: wp("4.5%"),
+        fontSize: wp("5%"),
+        fontFamily: "Loviena",
     },
 
     weddingContainer: {

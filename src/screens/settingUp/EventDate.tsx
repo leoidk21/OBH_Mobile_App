@@ -45,66 +45,20 @@ const ClientsName = () => {
             </View>
 
             <View style={styles.step}>
-              <View
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: wp("20%"),
-                  height: hp("0.8%"),
-                  borderRadius: 50,
-                  backgroundColor: colors.brown,
-                }}
-              ></View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: wp("20%"),
-                  height: hp("0.8%"),
-                  borderRadius: 50,
-                  backgroundColor: colors.brown,
-                }}
-              ></View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: wp("20%"),
-                  height: hp("0.8%"),
-                  borderRadius: 50,
-                  backgroundColor: colors.brown,
-                }}
-              ></View>
+                <View style={[styles.stepDot, { backgroundColor: colors.brown }]} />
+                <View style={[styles.stepDot, { backgroundColor: colors.brown }]} />
+                <View style={[styles.stepDot, { backgroundColor: colors.brown }]} />
+                <View style={[styles.stepDot, { backgroundColor: colors.brown }]} />
             </View>
-
+            
             <View>
-              <Text
-                style={{
-                  top: hp("2%"),
-                  right: wp("6%"),
-                  fontSize: wp("4%"),
-                  color: colors.brown,
-                }}
-              >
-                3/3
-              </Text>
+                <Text style={styles.stepText}>
+                    4/4
+                </Text>
             </View>
           </View>
           <View style={styles.topContent}>
-            <Text
-              style={{
-                left: wp("6%"),
-                textAlign: "left",
-                fontSize: wp("8%"),
-                color: colors.black,
-                lineHeight: wp("8%"),
-                fontFamily: "Loviena",
-                marginTop: hp("4%"),
-                marginBottom: hp("1%"),
-              }}
-            >
+            <Text style={styles.topText}>
               Set Your{"\n"}Wedding Date
             </Text>
           </View>
@@ -229,18 +183,11 @@ const ClientsName = () => {
             <View style={styles.bottomContent}>
               <TouchableOpacity
                 style={styles.createButton}
-                onPress={() => navigation.navigate("Home")}
+                onPress={() => navigation.navigate("CompanyPolicy")}
               >
                 <Text style={styles.buttonText}>
                   Create Event
                 </Text>
-                <View>
-                  <FontAwesomeIcon
-                    size={16}
-                    icon={faArrowRight}
-                    color={colors.white}
-                  />
-                </View>
               </TouchableOpacity>
             </View>
         </LinearGradient>
@@ -261,21 +208,18 @@ const styles = StyleSheet.create({
   },
 
   createButton: {
-    gap: 10,
-    width: wp("88%"),
-    borderRadius: 18,
-    height: hp("6%"),
-    alignSelf: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "center",
+    width: wp('88%'),
+    alignItems: 'center',
+    borderRadius: wp('50%'),
+    paddingVertical: hp('1.4%'),
+    paddingHorizontal: wp('5%'),
     backgroundColor: colors.button,
   },
 
   buttonText: {
+    fontSize: 15,
     color: colors.white,
-    textAlign: "center",
-    fontSize: wp("4.5%"),
+    fontFamily: 'Poppins',
   },
 
   backBtn: {
@@ -287,13 +231,39 @@ const styles = StyleSheet.create({
   },
   
   step: {
-    gap: wp("3%"),
-    flexDirection: "row",
-    marginTop: hp("3.2%"),
+      gap: wp("3%"),
+      flexDirection: "row",
+      marginTop: hp("3.2%"),
+  },
+      
+  stepDot: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: wp("15%"),
+    height: hp("0.8%"),
+    borderRadius: 50,
+  },
+
+  stepText: {
+      top: hp("2%"), 
+      right: wp("6%"), 
+      fontSize: wp("4%"), 
+      color: colors.brown
   },
 
   topContent: {
     justifyContent: "center",
+  },
+
+  topText: {
+    left: wp("6%"),
+    textAlign: "left",
+    fontSize: wp("8%"),
+    color: colors.black,
+    lineHeight: wp("8%"),
+    fontFamily: "Loviena",
+    marginTop: hp("4%"),
+    marginBottom: hp("1%"),
   },
 
   faUser: {

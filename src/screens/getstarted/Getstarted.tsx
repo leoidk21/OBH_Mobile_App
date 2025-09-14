@@ -1,6 +1,5 @@
-// src/screens/getstarted/GetStartedScreen.tsx
-import React, { useRef, useState } from 'react';
-import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import React, { useRef, useState, useEffect } from 'react';
+import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, ActivityIndicator } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import { LinearGradient } from 'expo-linear-gradient';
 import colors from '../config/colors';
@@ -47,11 +46,6 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Loading'>;
 
 export default function GetStartedScreen() {
   const [fontsLoaded] = useFonts({
-    'Sarasvati': require('../../assets/fonts/Sarasvati-9Y4w5.ttf'),
-    'Tan-Pearl': require('../../assets/fonts/tan-pearl.otf'),
-    'GreatVibes': require('../../assets/fonts/GreatVibes-Regular.ttf'),
-    'Hvd': require('../../assets/fonts/HvDTrial_Brandon_Grotesque_light-BF64a625c93e709.otf'),
-    'BIZ': require('../../assets/fonts/BIZUDPMincho-Regular.ttf'),
     'Poppins': require('../../assets/fonts/Poppins-Regular.ttf'),
     'Loviena': require('../../assets/fonts/lovienapersonaluseonlyregular-yy4pq.ttf'),
     'Canela': require('../../assets/fonts/CanelaCondensed-Regular-Trial.otf'),
@@ -59,36 +53,61 @@ export default function GetStartedScreen() {
     'Velista': require('../../assets/fonts/VELISTA.ttf'),
   });
 
+  const [appReady, setAppReady] = useState(false);
+  const [fontLoadComplete, setFontLoadComplete] = useState(false);
+
   const insets = useSafeAreaInsets();
   const pagerRef = useRef<PagerView>(null);
   const [pageIndex, setPageIndex] = useState(0);
   
   const onPageSelected = (e: { nativeEvent: { position: number } }) => {
     setPageIndex(e.nativeEvent.position);
-  };``
+  };
   
   const navigation = useNavigation<NavigationProp>();
-    
-  const getStartedBtnStyle = {
-    width: wp(74),
-    borderRadius: wp(10),
-    paddingVertical: hp(1.7),
-  };
 
-  const LoginButtonStyle = {
-    width: wp(74),
-    marginTop: hp(1.5),
-    borderRadius: wp(10),
-    paddingVertical: hp(1.7),
-  };
+  // Simulate a minimum loading time for better UX
+  useEffect(() => {
+    if (fontsLoaded) {
+      setFontLoadComplete(true);
+    }
+  }, [fontsLoaded]);
+
+  useEffect(() => {
+      if (fontLoadComplete) {
+          const timer = setTimeout(() => {
+              setAppReady(true);
+          }, 300);
+          return () => clearTimeout(timer);
+      }
+  }, [fontLoadComplete]);
+
+  // Show loading screen while fonts are loading
+  if (!appReady) {
+    return (
+      <SafeAreaView style={styles.loadingContainer}>
+        <LinearGradient
+          end={[0, 1]}
+          start={[0, 0]}
+          style={styles.container}
+          colors={["#FFF8E7", "#FAF3E0", "#FFF4F0"]}
+        >
+          <View style={styles.loadingContent}>
+            <ActivityIndicator size="large" color="#19579C" />
+            <Text style={styles.loadingText}>Loading...</Text>
+          </View>
+        </LinearGradient>
+      </SafeAreaView>
+    );
+  }
 
   return (
       <SafeAreaView style={{ flex: 1 }}>
         <LinearGradient
-          colors={["#FFF8E7", "#FAF3E0", "#FFF4F0"]}
-          start={[0, 0]}
-          end={[0, 1]}
-          style={styles.container}
+            end={[0, 1]}
+            start={[0, 0]}
+            style={styles.container}
+            colors={["#FFF8E7", "#FAF3E0", "#FFF4F0"]}
         >
           <View
             style={{
@@ -150,20 +169,21 @@ export default function GetStartedScreen() {
             {/* Buttons */}
             <View style={styles.buttonContainer}>
               <LinearGradient
-                colors={["#19579C", "#102E50"]}
-                start={{ x: 1, y: 0.5 }}
-                end={{ x: 0, y: 0.5 }}
-                style={getStartedBtnStyle}
+                  colors={["#19579C", "#102E50"]}
+                  start={{ x: 1, y: 0.5 }}
+                  end={{ x: 0, y: 0.5 }}
+                  style={styles.getStartedButton}
               >
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("SignUp")}
-                  activeOpacity={0.7}
+                    onPress={() => navigation.navigate("SignUp")}
+                    activeOpacity={0.7}
                 >
                   <Text style={styles.getBtnText}>GET STARTED</Text>
                 </TouchableOpacity>
               </LinearGradient>
+              
               <TouchableOpacity
-                style={[styles.LoginBtn, LoginButtonStyle]}
+                style={styles.LoginBtn}
                 onPress={() => navigation.navigate("SignIn")}
                 activeOpacity={0.7}
               >
@@ -234,8 +254,8 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: wp("80%"), 
-    height: hp("30%"),
+    width: wp("60%"),
+    height: wp("60%"),
     marginTop: hp("3%"),
     marginBottom: hp("2%"),
   },
@@ -292,13 +312,10 @@ const styles = StyleSheet.create({
   },
 
   getStartedButton: {
-    elevation: 1,
-    borderWidth: 1,
-    shadowOpacity: 0.25,
-    borderColor: colors.border,
-    shadowColor: "#222020ff",
-    backgroundColor: colors.secondary,
-    shadowOffset: { width: 1, height: 1 },
+    width: wp('80%'),
+    borderRadius: wp('50%'),
+    paddingHorizontal: wp('5%'),
+    paddingVertical: hp('1.8%'),
   },
 
   getBtnText: {
@@ -314,14 +331,20 @@ const styles = StyleSheet.create({
   },
 
   LoginBtn: {
-    elevation: 1,
     borderWidth: 1,
-    shadowRadius: 4,
+    width: wp('80%'),
+    marginTop: hp('1.8%'),
+    borderRadius: wp('50%'),
+    paddingHorizontal: wp('5%'),
+    paddingVertical: hp('1.6%'),
+    borderColor: colors.borderv1,
+    backgroundColor: colors.white,
+    
+    elevation: 2,
+    shadowRadius: 3.84,
     shadowOpacity: 0.25,
-    shadowColor: "#000000",
-    borderColor: colors.border,
-    backgroundColor: colors.secondary,
-    shadowOffset: { width: 0.5, height: 1 },
+    shadowColor: colors.black,
+    shadowOffset: { width: 0, height: 2 },
   },
 
   loginBtnText: {
@@ -329,4 +352,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
+  loadingContainer: {
+    flex: 1,
+  },
+  loadingContent: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loadingText: {
+    fontSize: 16,
+    marginTop: 20,
+    fontFamily: 'Poppins',
+  },
 });

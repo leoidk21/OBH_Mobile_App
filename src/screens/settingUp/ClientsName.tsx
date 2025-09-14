@@ -28,7 +28,7 @@ const ClientsName = () => {
               <View>
                 <TouchableOpacity
                   style={styles.backBtn}
-                  onPress={() => navigation.navigate("ChooseEvent")}
+                  onPress={() => navigation.navigate("EventPrice")}
                 >
                   <FontAwesomeIcon
                     icon={faChevronLeft}
@@ -39,15 +39,16 @@ const ClientsName = () => {
               </View>
 
               <View style={styles.step}>
-                <View style={{ alignItems: "center", justifyContent: "center", width: wp("20%"), height: hp("0.8%"), borderRadius: 50, backgroundColor: colors.brown }}></View>
-                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", width: wp("20%"), height: hp("0.8%"), borderRadius: 50, backgroundColor: colors.brown }}></View>
-                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", width: wp("20%"), height: hp("0.8%"), borderRadius: 50, backgroundColor: colors.border }}></View>
+                  <View style={[styles.stepDot, { backgroundColor: colors.brown }]} />
+                  <View style={[styles.stepDot, { backgroundColor: colors.brown }]} />
+                  <View style={[styles.stepDot, { backgroundColor: colors.brown }]} />
+                  <View style={[styles.stepDot, { backgroundColor: colors.border }]} />
               </View>
-
+              
               <View>
-                <Text style={{ top: hp("2%"), right: wp("6%"), fontSize: wp("4%"), color: colors.brown }}>
-                  2/3
-                </Text>
+                  <Text style={styles.stepText}>
+                      3/4
+                  </Text>
               </View>
             </View>
 
@@ -113,10 +114,10 @@ const ClientsName = () => {
 
           <View style={styles.bottomContent}>
             <TouchableOpacity
-              style={{ width: wp("88%"), borderRadius: 18, height: hp("6%"), alignSelf: "center", alignItems: "center", justifyContent: "center", flexDirection: "row", gap: 10, backgroundColor: colors.button }}
+              style={styles.continueButton}
               onPress={() => navigation.navigate("EventDate")}
             >
-              <Text style={{ color: colors.white, fontSize: wp("4.5%"), textAlign: "center", width: wp("100%") }}>
+              <Text style={styles.continueButtonText}>
                 Continue
               </Text>
             </TouchableOpacity>
@@ -152,6 +153,21 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: hp("3.2%"),
   },
+    
+  stepDot: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: wp("15%"),
+    height: hp("0.8%"),
+    borderRadius: 50,
+  },
+
+  stepText: {
+      top: hp("2%"), 
+      right: wp("6%"), 
+      fontSize: wp("4%"), 
+      color: colors.brown
+  },
 
   topContent: {
     marginTop: hp("2%"),
@@ -172,6 +188,21 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     paddingHorizontal: wp("7%"),
     backgroundColor: colors.white,
+  },
+
+  continueButton: {
+    width: wp('88%'),
+    alignItems: 'center',
+    borderRadius: wp('50%'),
+    paddingVertical: hp('1.4%'),
+    paddingHorizontal: wp('5%'),
+    backgroundColor: colors.button,
+  },
+
+  continueButtonText: {
+    fontSize: 15,
+    color: colors.white,
+    fontFamily: 'Poppins',
   },
 
 });

@@ -17,5 +17,7 @@ export default {
   brown: '#343131',
   faUser: '#E0F2FE',
   checklist: '#F9DCA4',
+  checklistv2: '#B47D4C',
   red: '#E24141',
+  redv2: '#d90000ff',
 };
