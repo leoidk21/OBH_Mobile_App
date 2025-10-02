@@ -268,14 +268,14 @@ const styles = StyleSheet.create({
     },
 
     navigationContainer: {
-        position: "absolute",
-        bottom: 0,
         left: 0,
         right: 0,
+        bottom: 0,
         zIndex: 10,
         width: wp("100%"),
         padding: wp("2.2%"),
         flexDirection: "row",
+        position: "absolute",
         paddingBottom: hp("1.5%"),
         backgroundColor: colors.white,
         justifyContent: "space-around",
@@ -329,7 +329,6 @@ const styles = StyleSheet.create({
         paddingBottom: wp("2%"),
         paddingHorizontal: wp("6%"),
         backgroundColor: colors.white,
-
         elevation: 2, shadowOpacity: 0.1, shadowRadius: wp("0.4%"), shadowColor: colors.black, shadowOffset: { width: 0, height: hp("0.2%") },
     },
     
